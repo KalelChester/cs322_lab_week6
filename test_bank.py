@@ -18,16 +18,19 @@ def test_withdraw():
     assert account.get_balance() == 5, "Balance after withdrawal: $5.00"
 
 def test_deposit_negative_amount():
+    # Test that depositing a negative ammount returns an error.
     account = Account("Testing_User", 5)
     with pytest.raises(ValueError, match="Deposit amount must be positive"):
         account.deposit(-5)
 
 def test_withdraw_more_than_balance():
+    # Test that withdrawing more than the balance returns an error.
     account = Account("Testing_User", 5)
     with pytest.raises(ValueError, match="Insufficient funds"):
         account.withdraw(10)
 
 def test_withdraw_negative_amount():
+    # Test that withdrawing a negative ammount returns an error.
     account = Account("Testing_User", 5)
     with pytest.raises(ValueError, match="Withdrawal amount must be positive"):
         account.withdraw(-10)
